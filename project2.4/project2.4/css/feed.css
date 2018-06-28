@@ -194,6 +194,7 @@
     right: 0;
     margin: auto;
     margin-bottom: 30px;
+    overflow: auto;
     width: 40%;
     min-width: 600px;
     margin-bottom: 30px;

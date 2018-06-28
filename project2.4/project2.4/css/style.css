@@ -48,7 +48,7 @@ textarea {
     text-transform: uppercase;
     transition: 0.2s;
     float: left;
-    height: 40px;
+    height: 43px;
     opacity: 0.9;
     width: 12.5%;
     background-color: #d7dde5;
@@ -81,22 +81,6 @@ textarea {
 }
 
 
-
-@media (max-width:700px) {
-    .menuitem, .selectedItem{
-        text-indent:-9999px;
-    }
-
-    #logoSmall {
-        display:block;
-    }
-
-    #logoBig{
-        display:none;
-    }
-
-}
-
     .menuitem:hover, .selectedItem:hover {
         cursor: pointer;
         transition: 0.2s;
@@ -121,7 +105,7 @@ textarea {
 
 .searchBar {
     float: left;
-    height: 40px;
+    height: 43px;
     opacity: 0.9;
     width: 30%;
     background-color: #d7dde5;
@@ -133,6 +117,7 @@ textarea {
     border-bottom-style: solid;
     border-bottom-width: 2px;
     border-bottom-color: white;
+    overflow-y: hidden;
     background-color: #edeff2;
     color: black;
     padding: 5px;
@@ -141,7 +126,7 @@ textarea {
 
 .menufiller {
     float: left;
-    height: 40px;
+    height: 43px;
     opacity: 0.9;
     width: 3.75%;
     background-color: #d7dde5;
@@ -203,6 +188,49 @@ textarea {
 	margin-left: 10%;
 }
 
+@media (max-width:700px) {
+    .menuitem, .selectedItem {
+        text-indent: -9999px;
+        border-style: none;
+    }
+
+    .selectedItem {
+        cursor: pointer;
+        border-bottom-width: 3px;
+        border-bottom-color: #3851d7;
+        background-color: none;
+    }
+
+    .menufiller {
+        border-style: none;
+        border: none;
+    }
+
+    .searchBar {
+        border-style: none;
+        border-right: solid;
+        border-left: solid;
+        border-color: grey;
+        border-width: 1px;
+        border-bottom-style: none;
+    }
+
+    #logoSmall {
+        display: block;
+    }
+
+    #logoBig {
+        display: none;
+    }
+
+    .menuIcon {
+        background-color: none;
+        left: 0;
+        right: 0;
+        margin: auto;
+    }
+}
+
 ::-webkit-scrollbar {
     width: 10px;
 }
@@ -221,3 +249,4 @@ textarea {
     ::-webkit-scrollbar-thumb:hover {
         background-color: #909090;
     }
+
