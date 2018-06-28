@@ -92,6 +92,36 @@ input {
     margin: auto;
     margin-top: 15%;
 }
+
+@media (max-width: 700px) {
+    .welcomeScreen, .welcomeScreen-small, .welcomeScreen-extended {
+        display: none;
+    }
+    .login-form-small, .login-form-extended {
+        width: 50%;
+        margin-left: 6%;
+        margin-top: 9%;
+        border-left: 5px solid #3851d7;
+    }
+
+    img.hanzelogo {
+        position: fixed;
+        top: 90%;
+        right: 0%;
+    }
+    img.speechLogo {
+        display:none;
+    }
+    .smallLogo {
+        width:120px;
+        height:100px;
+        background-image:url('../images/Speech-simple.png');
+        background-size:cover;
+        margin-left:18%;
+        top:0%;
+    }
+}
+
 .welcomeScreen {
     float: left;
     background: #222;
@@ -109,8 +139,10 @@ input {
 
 img.speechLogo {
     position: absolute;
-    height: 150px;
+    height: 20%;
     right: 28%;
+    max-width: 100%;
+    background-size:cover;
     top: 17%;
 }
 

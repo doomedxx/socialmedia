@@ -1,6 +1,5 @@
 ﻿<img class="speechLogo" src="Images/Speech.png">   
  <div class="wrapper">
-
     <div class="welcomeScreen-extended">
         <div class="WelcomeHeader">Welcome to <span>!Speech</span></div>
         <div class="welcomeText">
@@ -21,7 +20,8 @@
         </span>
 
         </p>
-
+        <div style="color:red;" ng-repeat="registerError in registerErrors"> {{ registerError }} </div>
+        <div style="color:red;" ng-repeat="passwordError in passwordErrors"> {{ passwordError }} </div>
         <input type="UserID" class="login-username" autofocus="true" required="true" placeholder="First Name" ng-model="firstName" />
         <input type="text" class="login-password" required="true" placeholder="Last Name" ng-model="lastName" />
         <select class="login-gender" ng-model="gender">
@@ -32,8 +32,8 @@
         </select>
         <input type="email" class="login-password" required="true" placeholder="Email Address" ng-model="email" />
         <input type="date" class="login-password" required="true" placeholder="Date of birth" min="01-01-1900" max=DateTime.Now ng-model="dateOfBirth" />
-        <input type="password" class="login-password" required="true" placeholder="Password" />
-        <input type="password" class="login-password" required="true" placeholder="Password again" ng-model="password" />
+        <input type="password" class="login-password" required="true" placeholder="Password" ng-model="password" />
+        <input type="password" class="login-password" required="true" placeholder="Password again" ng-model="password2" />
         <input type="submit" name="Register" value="Register" class="login-submit" ng-click="registerUser()" />
 
         <div ng-click="redirectLogin()" class="login-forgot-pass">Login</div>

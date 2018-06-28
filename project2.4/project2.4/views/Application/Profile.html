@@ -1,13 +1,13 @@
 <body class="profile">
     <div id="menu">
-        <div ng-click="themeChange()" class="menuitem"> <img src="Images\logo-minimal.png" class="menuLogo"></div>
+        <div ng-click="themeChange()" class="menuitem"> <img id="logoBig" src="Images\logo-minimal.png" class="menuLogo"> <img id="logoSmall" src="../../images/Speech-simple.png" class="menuLogo" /></div>
         <div ng-click="redirectFeed()" class="menuitem"> <img src="Images\feedicon.png" class="menuIcon">Feed</div>
         <div ng-click="redirectOptions()" class="menufiller"></div>
         <textarea class="searchBar" placeholder="Search (Names, jobs, gender)"></textarea>
         <div ng-click="redirectOptions()" class="menufiller"></div>
         <div ng-click="redirectProfile()" class="selectedItem"><img src="Images\profileicon.png" class="menuIcon" />Profile</div>
         <div ng-click="redirectOptions()" class="menuitem"><img src="Images\settingsicon.png" class="menuIcon" /> Options</div>
-        <div ng-click="redirectLogin()" class="menuitem">Logout</div>
+        <div ng-click="redirectLogin()" class="menuitem"><img src="../../images/icons/logout.png" class="menuIcon" /> Logout</div>
     </div>
 
     <div class="background"><img src="Images\customwallpaper.jpg" class="customWallpaper" /></div>
@@ -20,38 +20,13 @@
             </div>
             <div class="userNameProfile">{{ProfileInfo.FirstName}} {{ProfileInfo.LastName}}</div>
             <div class="profileTabs">
-                <div class="profiletab">POSTS</div>
-                <div class="profiletab">PHOTO'S</div>
-                <div class="profiletab">NOTES</div>
-                <div class="profiletab">ABOUT ME</div>
+                <div class="profiletab" ng-click="showProfilePosts()">POSTS</div>
+                <div class="profiletab" ng-click="showProfilePhotos()">PHOTO'S</div>
+                <div class="profiletab" ng-click="showProfileNotes()">FRIENDS</div>
+                <div class="profiletab" ng-click="showProfileAbout()">ABOUT ME</div>
             </div>
         </div>
-        <div id="gotPosts-profile">
-            <div class="postcontainer-profile">
-                <img src="" class="user"><br /><p class="username">Wesley </p>
-                <div class="post">
-                    <p class="posttext">
-                        {{item.Feed.Text}}
-                    </p>
-                    <div class="postFooter">
-                        <button class=" postFooterButton"><img src="Images\respect.png" class="postFooterImages"></button>
-                        <button class=" postFooterButton"><img src="Images\comment.png" class="postFooterImages"></button>
-                        <button class=" postFooterButton"><img src="Images\share.png" class="postFooterImages"></button>
-                        <p class=" postFooterRespectCount">| {{item.Feed.Respect}} mensen gaven Respect!</p>
-                    </div>
-                </div>
-                <div class="comment-Container" ng-repeat="comment in item.Comments">
-                    <!-- COMMENT -->
-                    <div class="profileName"> {{comment.FirstName}} {{comment.LastName}}</div>
-                    <div class="commentText"> {{comment.CommentText}} </div>
-                    <img src="{{comment.ProfilePicUrl}}" class="commentuser">
-                </div>
-                <div class="placecomment-containter ">
-                    <textarea class="commentArea" placeholder="Enter your comment here" ng-model="NewComment[$index]"></textarea>
-                    <br />
-                    <button ng-click="PostComment(item.Feed.Id, $index)"><img src="Images\sendicon.png" class="postIcon">&nbsp; Post comment</button>
-                </div>
-            </div>
+        <div id="gotPosts-profile" ng-show="profilePosts">
             <div class="postcontainer-profile" ng-repeat="item in Feed track by $index">
                 <img src="{{item.Creator.ProfilePictureUrl}}" class="user"><br /><p class="username">{{item.Creator.FirstName}} {{item.Creator.LastName}} </p>
                 <div class="post">
@@ -62,12 +37,11 @@
                         <button class=" postFooterButton"><img src="Images\respect.png" class="postFooterImages"></button>
                         <button class=" postFooterButton"><img src="Images\comment.png" class="postFooterImages"></button>
                         <button class=" postFooterButton"><img src="Images\share.png" class="postFooterImages"></button>
-                        <p class=" postFooterRespectCount">| {{item.Feed.Respect}} mensen gaven Respect!</p>
+                        <p class=" postFooterRespectCount">| {{item.Feed.Respect}} Respect!</p>
+                    </div>
+                </div>
+                <div class="comment-Container" ng-repeat="comment in item.Comments">
 
-                    </div>
-                </div>
-                <div class="comment-Container" ng-repeat="comment in item.Comments">
-                    <!-- COMMENT -->
                     <div class="profileName"> {{comment.FirstName}} {{comment.LastName}}</div>
                     <div class="commentText"> {{comment.CommentText}} </div>
                     <img src="{{comment.ProfilePicUrl}}" class="commentuser">
@@ -78,69 +52,76 @@
                     <button ng-click="PostComment(item.Feed.Id, $index)"><img src="Images\sendicon.png" class="postIcon">&nbsp; Post comment</button>
                 </div>
             </div>
+        </div>
+        <div id="gotPosts-profile" ng-show="profilePhotos">
             <div class="postcontainer-profile">
-                <img src="" class="user"><br /><p class="username">Wesley </p>
-                <div class="post">
-                    <p class="posttext">
-                        {{item.Feed.Text}}
-                    </p>
-                    <div class="postFooter">
-                        <button class=" postFooterButton"><img src="Images\respect.png" class="postFooterImages"></button>
-                        <button class=" postFooterButton"><img src="Images\comment.png" class="postFooterImages"></button>
-                        <button class=" postFooterButton"><img src="Images\share.png" class="postFooterImages"></button>
-                        <p class=" postFooterRespectCount">| {{item.Feed.Respect}} mensen gaven Respect!</p>
-                    </div>
-                </div>
-                <div class="comment-Container" ng-repeat="comment in item.Comments">
-                    <!-- COMMENT -->
-                    <div class="profileName"> {{comment.FirstName}} {{comment.LastName}}</div>
-                    <div class="commentText"> {{comment.CommentText}} </div>
-                    <img src="{{comment.ProfilePicUrl}}" class="commentuser">
-                </div>
-                <div class="placecomment-containter ">
-                    <textarea class="commentArea" placeholder="Enter your comment here" ng-model="NewComment[$index]"></textarea>
-                    <br />
-                    <button ng-click="PostComment(item.Feed.Id, $index)"><img src="Images\sendicon.png" class="postIcon">&nbsp; Post comment</button>
-                </div>
+                Geplaatste foto's hier laten zien
             </div>
+        </div>
+
+        <div id="gotPosts-profile" ng-show="profileNotes">
             <div class="postcontainer-profile">
-                <img src="" class="user"><br /><p class="username">Wesley </p>
-                <div class="post">
-                    <p class="posttext">
-                        {{item.Feed.Text}}
-                    </p>
-                    <div class="postFooter">
-                        <button class=" postFooterButton"><img src="Images\respect.png" class="postFooterImages"></button>
-                        <button class=" postFooterButton"><img src="Images\comment.png" class="postFooterImages"></button>
-                        <button class=" postFooterButton"><img src="Images\share.png" class="postFooterImages"></button>
-                        <p class=" postFooterRespectCount">| {{item.Feed.Respect}} mensen gaven Respect!</p>
-                    </div>
+
+                <div id="Header"><img src="Images\icons\network.png" id="headerIcon"><center>Friends</center></div>
+                <div ng-click="redirectFriends()" style="text-align:center; border-bottom:1px solid black;">Show your friends hometowns</div>
+                <div class="profileFriends">
+                    <div id="profileHead"> <img id="profileHeadPic" src="{{ProfileInfo.ProfilePictureUrl}}" /> </div>
+                    <div id="profileName">{{ProfileInfo.FirstName}} {{ProfileInfo.LastName}}</div>
                 </div>
-                <div class="comment-Container" ng-repeat="comment in item.Comments">
-                    <!-- COMMENT -->
-                    <div class="profileName"> {{comment.FirstName}} {{comment.LastName}}</div>
-                    <div class="commentText"> {{comment.CommentText}} </div>
-                    <img src="{{comment.ProfilePicUrl}}" class="commentuser">
+                <div class="profileFriends">
+                    <div id="profileHead"> <img id="profileHeadPic" src="../../images/wesley.jpg" /> </div>
+                    <div id="profileName">Wesley de Waart</div>
                 </div>
-                <div class="placecomment-containter ">
-                    <textarea class="commentArea" placeholder="Enter your comment here" ng-model="NewComment[$index]"></textarea>
-                    <br />
-                    <button ng-click="PostComment(item.Feed.Id, $index)"><img src="Images\sendicon.png" class="postIcon">&nbsp; Post comment</button>
+                <div class="profileFriends">
+                    <div id="profileHead"> <img id="profileHeadPic" src="../../images/arjen.jpg" /> </div>
+                    <div id="profileName">Arjen Bovee</div>
                 </div>
+                <div class="profileFriends">
+                    <div id="profileHead"> <img id="profileHeadPic" src="../../images/BarackObama.jpg" /> </div>
+                    <div id="profileName">Miguel Grant</div>
+                </div>
+                
+                <!--
+    foreach friend{
+        <div class="friendThumbnail">
+            Profile picture
+            Naam
+        </div>
+    }
+    -->
             </div>
-    </div>
+        </div>
+
+        <div id="gotPosts-profile" ng-show="profileAbout">
+            <div class="postcontainer-profile">
+                <ul id="userInfoItem">
+                    
+                    <li class="description"><img src="Images\aboutIcon.png" class="profileInfoIcon" /> {{ProfileInfo.AboutMe}}</li>
+                    <li class="description"><img src="Images\icons\jobicon.png" class="profileInfoIcon">Works at <b>{{ProfileInfo.Work}}</b> </li>
+                    <li class="description"><img src="Images\icons\schoolicon.png" class="profileInfoIcon">Studys <b>{{ProfileInfo.School}}</b> </li>
+                    <li class="description"><img src="Images\icons\homeicon.png" class="profileInfoIcon">Lives in <b>{{ProfileInfo.Hometown}}</b> </li>
+                    <li class="description"><img src="Images\icons\relationshipIcon.png" class="profileInfoIcon"><b>{{ProfileInfo.Relation}}</b> </li>
+                    <li class="description"><img src="Images\icons\genderIcon.png" class="profileInfoIcon"><b>{{ProfileInfo.Gender}}</b> </li>
+                    <li class="description"><img src="Images\icons\birthday.png" class="profileInfoIcon" />Born at <b>{{ProfileInfo.BirthDate | date:'dd-MM-yyyy'}}</b></li>
+                    <li class="description"><img src="Images\icons\memberIcon.png" class="profileInfoIcon">Member since <b>{{ProfileInfo.MemberSince | date:'dd-M-yyyy'}}</b> </li>
+                </ul>
+
+            </div>
+        </div>
+
+        
         <!--Links-->
         <div class="infoBoxes-left">
             <div id="infoContainer">
                 <div id="Header"><img src="Images\icons\aboutme.png" id="headerIcon"><center>ABOUT ME</center></div>
-                <div class="motto">You can get me out of the KFC. But you can't get KFC out of me.</div>
+                <div class="motto">{{ProfileInfo.Motto}}</div>
                 <ul id="userInfoItem">
                     <li class="description"><img src="Images\icons\jobicon.png" class="profileInfoIcon">Works at <b>{{ProfileInfo.Work}}</b> </li>
                     <li class="description"><img src="Images\icons\schoolicon.png" class="profileInfoIcon">Studys <b>{{ProfileInfo.School}}</b> </li>
                     <li class="description"><img src="Images\icons\homeicon.png" class="profileInfoIcon">Lives in <b>{{ProfileInfo.Hometown}}</b> </li>
                     <li class="description"><img src="Images\icons\relationshipIcon.png" class="profileInfoIcon"><b>{{ProfileInfo.Relation}}</b> </li>
                     <li class="description"><img src="Images\icons\genderIcon.png" class="profileInfoIcon"><b>{{ProfileInfo.Gender}}</b> </li>
-                    <li class="description"><img src="Images\icons\birthday2.png" class="profileInfoIcon"/>Born at <b>{{ProfileInfo.BirthDate | date:'dd-MM-yyyy'}}</b></li>
+                    <li class="description"><img src="Images\icons\birthday.png" class="profileInfoIcon" />Born at <b>{{ProfileInfo.BirthDate | date:'dd-MM-yyyy'}}</b></li>
                     <li class="description"><img src="Images\icons\memberIcon.png" class="profileInfoIcon">Member since <b>{{ProfileInfo.MemberSince | date:'dd-M-yyyy'}}</b> </li>
                 </ul>
             </div>

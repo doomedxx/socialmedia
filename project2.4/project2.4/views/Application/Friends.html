@@ -1,12 +1,12 @@
 ﻿<div id="menu">
-    <div ng-click="redirectFeed()" class="menuitem"> <img src="Images\speech.png" class="menuLogo"></div>
-    <div ng-click="redirectFeed()" class="selectedItem">Feed</div>
+    <div ng-click="themeChange()" class="menuitem"> <img id="logoBig" src="Images\logo-minimal.png" class="menuLogo"> <img id="logoSmall" src="../../images/Speech-simple.png" class="menuLogo" /></div>
+    <div ng-click="redirectFeed()" class="menuitem"> <img src="Images\feedicon.png" class="menuIcon">Feed</div>
     <div ng-click="redirectOptions()" class="menufiller"></div>
     <textarea class="searchBar" placeholder="Search (Names, jobs, gender)"></textarea>
     <div ng-click="redirectOptions()" class="menufiller"></div>
-    <div ng-click="redirectProfile()" class="menuitem"><img src="Images\profileicon.png" class="menuIcon" />Profile</div>
+    <div ng-click="redirectProfile()" class="selectedItem"><img src="Images\profileicon.png" class="menuIcon" />Profile</div>
     <div ng-click="redirectOptions()" class="menuitem"><img src="Images\settingsicon.png" class="menuIcon" /> Options</div>
-    <div ng-click="redirectLogin()" class="menuitem">Logout</div>
+    <div ng-click="redirectLogin()" class="menuitem"><img src="../../images/icons/logout.png" class="menuIcon" /> Logout</div>
 </div>
 <div class="UserPanelContainer">
     <div id="Header"> <center>{{Account.FirstName}} {{Account.LastName}}</center></div>
@@ -19,8 +19,9 @@
     <div id="panelInformation">
         <div class="WeatherWidget">
             <center>
-                <img src="Images\weatherSunny.png" id="weatherIcon">
                 <p>You are currently in <br> <b>Groningen</b></p>
+                <img src="Images\weatherSunny.png" id="weatherIcon">
+
                 <p id="Temperature"> 28ºC</p>
             </center>
         </div>
@@ -47,13 +48,9 @@
     </div>
 </div>
 <!--Map-->
-<!--<div id="mapContainer">
-    <div id="mapTitle"><b>Friends based on location</b></div>
-    <div id="map"></div>
-</div>-->
-
 <div id="mapContainer" ng-controller="MapController">
-    <div id="mapTitle"><b>Friends based on location</b></div>
+    <div id="Header"><img src="Images\icons\aboutme.png" id="headerIcon"><center>Friends based on location</center></div>
+
     <div id="map"></div>
     <!--<div id="repeat" ng-repeat="marker in markers | orderBy : 'title'">
         <a id="country_container" href="#" ng-click="openInfoWindow($event, marker)">
@@ -62,11 +59,7 @@
     </div>-->
 </div>
 
-<!--<script src="http://maps.googleapis.com/maps/api/js?sensor=false&language=en"></script>-->
-<!--
-To use this code on your website, get a free API key from Google.
-Read more at: https://www.w3schools.com/graphics/google_maps_basic.asp
--->
+
 <!--Friend Requests-->
 <div id="friendRequest">
     <div id="requestTitle"><b>Friend Requests</b></div>
@@ -102,49 +95,73 @@ Read more at: https://www.w3schools.com/graphics/google_maps_basic.asp
     </div>
 </div>
 <!-- Friends Bar-->
-<div id="friends">
+<div id="friendsTen">
     <div id="topTenTitle"><b>Top Ten Friends</b></div>
     <div id="topTen">
         <div class="topTenFriend">
-            <div class="topTenPicture"></div>
+            <div class="topTenPicture"> <img src="../../images/arjen.jpg" class="topTenImage" /> </div>
             <div class="topTenName">Name 1</div>
         </div>
         <div class="topTenFriend">
-            <div class="topTenPicture"></div>
+            <div class="topTenPicture"> <img src="../../images/arjen.jpg" class="topTenImage" /> </div>
             <div class="topTenName">Name 2</div>
         </div>
         <div class="topTenFriend">
-            <div class="topTenPicture"></div>
+            <div class="topTenPicture"> <img src="../../images/arjen.jpg" class="topTenImage" /> </div>
             <div class="topTenName">Name 3</div>
         </div>
         <div class="topTenFriend">
-            <div class="topTenPicture"></div>
+            <div class="topTenPicture"> <img src="../../images/arjen.jpg" class="topTenImage" /> </div>
             <div class="topTenName">Name 4</div>
         </div>
         <div class="topTenFriend">
-            <div class="topTenPicture"></div>
+            <div class="topTenPicture"> <img src="../../images/arjen.jpg" class="topTenImage" /> </div>
             <div class="topTenName">Name 5</div>
         </div>
         <div class="topTenFriend">
-            <div class="topTenPicture"></div>
+            <div class="topTenPicture"> <img src="../../images/arjen.jpg" class="topTenImage" /> </div>
             <div class="topTenName">Name 6</div>
         </div>
         <div class="topTenFriend">
-            <div class="topTenPicture"></div>
+            <div class="topTenPicture"> <img src="../../images/arjen.jpg" class="topTenImage" /> </div>
             <div class="topTenName">Name 7</div>
         </div>
         <div class="topTenFriend">
-            <div class="topTenPicture"></div>
+            <div class="topTenPicture"> <img src="../../images/arjen.jpg" class="topTenImage" /> </div>
             <div class="topTenName">Name 8</div>
         </div>
         <div class="topTenFriend">
-            <div class="topTenPicture"></div>
+            <div class="topTenPicture"> <img src="../../images/arjen.jpg" class="topTenImage" /> </div>
             <div class="topTenName">Name 9</div>
         </div>
         <div class="topTenFriend">
-            <div class="topTenPicture"></div>
+            <div class="topTenPicture"> <img src="../../images/arjen.jpg" class="topTenImage" /> </div>
             <div class="topTenName">Name 10</div>
         </div>
     </div>
     <a href="">All Friends</a>
 </div>
+
+<div id="friendsFour">
+    <div class="topFourFriend">
+        <div class="topFourPicture"> <img src="../../images/arjen.jpg" class="topFourImage" /> </div>
+        <div class="topFourName">Name 1</div>
+    </div>
+    <div class="topFourFriend">
+        <div class="topFourPicture"> <img src="../../images/arjen.jpg" class="topFourImage" /> </div>
+        <div class="topFourName">Name 2</div>
+    </div>
+    <div class="topFourFriend">
+        <div class="topFourPicture"> <img src="../../images/arjen.jpg" class="topFourImage" /> </div>
+        <div class="topFourName">Name 3</div>
+    </div>
+    <div class="topFourFriend">
+        <div class="topFourPicture"> <img src="../../images/arjen.jpg" class="topFourImage" /> </div>
+        <div class="topFourName">Name 4</div>
+    </div>
+    <br /><br /><br /><br /><br /><br />
+    <a style="margin-left:40%;" href="">All Friends</a>
+</div>
+
+
+<div ng-repeat="place in places"> {{ place }} </div>

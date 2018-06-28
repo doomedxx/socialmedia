@@ -4,7 +4,6 @@
 }
 
 .underlay-photo {
-    background-image: url("../images/bg-login.jpg");
     background-size: cover;
     -webkit-filter: grayscale(20%);
     z-index: -1;
@@ -437,9 +436,10 @@ post.hover ~.postFooter {
     text-align: right;
     float: left;
     left: 19%;
-    top: 80px;
-    height: 40px;
-    font-size: 0.7vw;
+    top: 15%;
+    height: 8%;
+    width:auto;
+    font-size: 0.8vw;
     text-align: right;
     padding-left: 20px;
     padding-right: 50px;
@@ -453,8 +453,9 @@ post.hover ~.postFooter {
     text-align: right;
     float: left;
     left: 56%;
-    top: 80px;
-    height: 40px;
+    top: 15%;
+    height: 8%;
+    width:auto;
     font-size: 0.7vw;
     text-align: right;
     padding-left: 40px;
@@ -476,7 +477,7 @@ post.hover ~.postFooter {
     height: 40%;
     width: 10%;
 }
-
+/*hierzo*/
 .UserPanelContainer {
     position: absolute;
     background-color: #d7dde5;
@@ -484,7 +485,7 @@ post.hover ~.postFooter {
     border-style: solid;
     border-color: #999aa3;
     left: 2%;
-    top: 130px;
+    top: 11%;
     width: 25%;
     min-height: 450px;
     height: 55%;
@@ -508,20 +509,23 @@ post.hover ~.postFooter {
     background-color: #3851d7;
 }
 
+
+
 #panelNamePic {
     z-index: 2;
+    position: absolute;
+    float: left;
+    left: 42%;
+    top: 8%;
+    max-height: 20%;
+    max-width: 20%;
+    border-radius: 50%;
+    background-color: white;
     display: block;
     margin: 0px auto;
-    left: 0;
-    right: 0;
-    position: absolute;
-    border-radius: 50%;
-    height: 20%;
-    top: 35px;
-    float: left;
+    
     border: 2px solid white;
     border-color: #a8b9c1;
-    background-color: white;
 }
 
 .reporterTool {
@@ -551,3 +555,72 @@ post.hover ~.postFooter {
         opacity: 1;
     }
 }
+
+@media (max-width: 700px) {
+    .UserPanelContainer {
+        display: none;
+    }
+
+    #gotPosts-feed {
+        left: 0;
+    }
+
+    #createPost {
+        left: 0;
+        border-left-width: 5px;
+        min-width:95%;
+    }
+
+        .createposttext{
+            font-size: 18px;
+        }
+        
+        .addMedia {
+            font-size:10px;
+        }
+
+        #CreatePublishButton {
+            font-size:10px;
+        }
+
+    .postcontainer-feed {
+        left:0;
+        border-left-width:5px;
+        min-width:95%;
+    }
+    .user {
+        width: 75px;
+        height: 75px;
+    }
+    .username {
+        min-width: 150px;
+        padding-left: 4%;
+        left: 75px;
+    }
+
+    .post {
+        font-size: calc(10px + 0.7vw);
+        left: 20px;
+        min-width: 90%;
+        margin-top: 45px;
+    }
+    .postFooter {
+        bottom: 5px;
+    }
+
+    .comment-Container {
+        width: 60%;
+        min-width: 80%;
+        left: 18px;
+        margin-top: 2px;
+        font-size: calc(10px + 0.7vw);
+    }
+
+    .placecomment-containter {
+        width: 100%;
+        margin-left: 10%;
+        border-radius:6px;
+    }
+}
+
+

@@ -8,11 +8,14 @@ function TokenService()
 
     function SetAccessToken(Token)
     {
+        sessionStorage.setItem("AccessToken", Token);
         this.AccessToken = Token;
     }
 
     function GetAccessToken()
     {
+        if (AccessToken == "")
+            return sessionStorage.getItem("AccessToken");
         return this.AccessToken;
     }
 

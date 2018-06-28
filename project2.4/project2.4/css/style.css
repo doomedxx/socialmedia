@@ -44,7 +44,7 @@ textarea {
 	float: left;
 	border: 1px solid black;
 }
-.menuitem {
+.menuitem, .selectedItem {
     text-transform: uppercase;
     transition: 0.2s;
     float: left;
@@ -58,15 +58,46 @@ textarea {
     -webkit-box-sizing: border-box;
     border: 1px solid black;
     border-bottom-style: solid;
-    border-bottom-width: 2px;
-    border-bottom-color: white;
-    background-color: #edeff2;
     color: black;
     padding: 5px;
     font-size: 1.4vw;
 }
 
-    .menuitem:hover {
+.menuitem {
+    border-bottom-width: 2px;
+    border-bottom-color: white;
+    background-color: #edeff2;
+}
+
+.selectedItem {
+    cursor: pointer;
+    border-bottom-width: 3px;
+    border-bottom-color: #3851d7;
+    background-color: aliceblue;
+}
+
+#logoSmall {
+    display:none;
+}
+
+
+
+@media (max-width:700px) {
+    .menuitem, .selectedItem{
+        text-indent:-9999px;
+    }
+
+    #logoSmall {
+        display:block;
+    }
+
+    #logoBig{
+        display:none;
+    }
+
+}
+
+    .menuitem:hover, .selectedItem:hover {
         cursor: pointer;
         transition: 0.2s;
         background-color: white;
@@ -105,7 +136,7 @@ textarea {
     background-color: #edeff2;
     color: black;
     padding: 5px;
-    font-size: 22px
+    font-size: calc(10px + 0.7vw);
 }
 
 .menufiller {
@@ -126,29 +157,6 @@ textarea {
     color: black;
     padding: 5px;
     font-size: 25px;
-}
-
-.selectedItem {
-    text-transform: uppercase;
-    transition: 0.2s;
-    cursor: pointer;
-    transition: 0.2s;
-    float: left;
-    height: 40px;
-    width: 12.5%;
-    background-color: #d7dde5;
-    display: inline-block;
-    box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    border: 1px solid black;
-    border-bottom-style: solid;
-    border-bottom-width: 3px;
-    border-bottom-color: #3851d7;
-    background-color: aliceblue;
-    color: black;
-    padding: 5px;
-    font-size: 1.4vw;
 }
 
 #userInfo {

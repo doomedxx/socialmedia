@@ -1,13 +1,14 @@
 <div id="menu">
-    <div ng-click="redirectFeed()" class="menuitem"> <img src="Images\speech.png" class="menuLogo"></div>
+    <div ng-click="themeChange()" class="menuitem"> <img id="logoBig" src="Images\logo-minimal.png" class="menuLogo"> <img id="logoSmall" src="../../images/Speech-simple.png" class="menuLogo" /></div>
     <div ng-click="redirectFeed()" class="selectedItem"> <img src="Images\feedicon.png" class="menuIcon">Feed</div>
     <div ng-click="redirectOptions()" class="menufiller"></div>
     <textarea class="searchBar" placeholder="Search (Names, jobs, gender)"></textarea>
     <div ng-click="redirectOptions()" class="menufiller"></div>
     <div ng-click="redirectProfile()" class="menuitem"><img src="Images\profileicon.png" class="menuIcon" />Profile</div>
     <div ng-click="redirectOptions()" class="menuitem"><img src="Images\settingsicon.png" class="menuIcon" /> Options</div>
-    <div ng-click="redirectLogin()" class="menuitem">Logout</div>
+    <div ng-click="redirectLogin()" class="menuitem"><img src="../../images/icons/logout.png" class="menuIcon"/> Logout</div>
 </div>
+
 
 <div class="UserPanelContainer">
     <div id="Header"> <center>{{Account.FirstName}} {{Account.LastName}}</center></div>
@@ -21,7 +22,7 @@
         <div class="WeatherWidget">
             <center>
                 <img src="Images\weatherSunny.png" id="weatherIcon">
-                <p>You are currently in <br> <b>Groningen</b></p> 
+                <p>You are currently in <br> <b>Groningen</b></p>
                 <p id="Temperature"> 28ºC</p>
             </center>
         </div>
@@ -53,7 +54,7 @@
 <div id="gotPosts-feed">
     <div id="createPost">
         <b class="createposttext"> Create Post</b><br>
-        <textarea id="postText" placeholder="Please enter your post here" ng-model="NewPostText"></textarea><br>
+        <textarea id="postText" placeholder="Please enter your post here" ng-model="NewPostText"></textarea><br />
         <div id="buttons">
             <input type="file" name="addImage" id="addImage" accept="image/*" />
             <label class="addMedia" for="addImage"><img src="Images\imageicon.png" class="postIcon">Add Image</label>
@@ -65,18 +66,17 @@
         </div>
 
     </div><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-
-    <div class="postcontainer-feed" ng-repeat="item in Feed track by $index">
+        <div class="postcontainer-feed" ng-repeat="item in Feed track by $index">
         <img src="{{item.Creator.ProfilePictureUrl}}" class="user"><br /><p class="username">{{item.Creator.FirstName}} {{item.Creator.LastName}} </p>
         <div class="post">
             <p class="posttext">
                 {{item.Feed.Text}}
             </p>
             <div class="postFooter">
-                <button class=" postFooterButton"><img src="Images\respect.png" class="postFooterImages"></button>
+                <button class=" postFooterButton" ng-click="GiveRespect(item.Feed.Id, $index)"><img src="Images\respect.png" class="postFooterImages"></button>
                 <button class=" postFooterButton"><img src="Images\comment.png" class="postFooterImages"></button>
                 <button class=" postFooterButton"><img src="Images\share.png" class="postFooterImages"></button>
-                <p class=" postFooterRespectCount">| 5 mensen gaven Respect!</p>
+                <p class=" postFooterRespectCount">| {{item.Feed.Respect}} Respect!</p>
 
             </div>
         </div>
@@ -86,12 +86,12 @@
             <div class="commentText"> {{comment.CommentText}} </div>
             <img src="{{comment.ProfilePicUrl}}" class="commentuser">
         </div>
-        
+
         <div class="placecomment-containter ">
             <textarea class="commentArea" placeholder="Enter your comment here" ng-model="NewComment[$index]"></textarea>
             <br />
-            <button  ng-click="PostComment(item.Feed.Id, $index)"><img src="Images\sendicon.png" class="postIcon">&nbsp; Post comment</button>
-            
+            <button ng-click="PostComment(item.Feed.Id, $index)"><img src="Images\sendicon.png" class="postIcon">&nbsp; Post comment</button>
+
         </div>
     </div>
 </div>

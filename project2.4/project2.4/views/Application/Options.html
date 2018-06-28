@@ -39,14 +39,14 @@
     </div>
 </div>
 <div id="menu">
-    <div ng-click="redirectFeed()" class="menuitem"> <img src="Images\speech.png" class="menuLogo"></div>
+    <div ng-click="themeChange()" class="menuitem"> <img id="logoBig" src="Images\logo-minimal.png" class="menuLogo"> <img id="logoSmall" src="../../images/Speech-simple.png" class="menuLogo" /></div>
     <div ng-click="redirectFeed()" class="menuitem"> <img src="Images\feedicon.png" class="menuIcon">Feed</div>
     <div ng-click="redirectOptions()" class="menufiller"></div>
     <textarea class="searchBar" placeholder="Search (Names, jobs, gender)"></textarea>
     <div ng-click="redirectOptions()" class="menufiller"></div>
     <div ng-click="redirectProfile()" class="menuitem"><img src="Images\profileicon.png" class="menuIcon" />Profile</div>
     <div ng-click="redirectOptions()" class="selectedItem"><img src="Images\settingsicon.png" class="menuIcon" /> Options</div>
-    <div ng-click="redirectLogin()" class="menuitem">Logout</div>
+    <div ng-click="redirectLogin()" class="menuitem"><img src="../../images/icons/logout.png" class="menuIcon" /> Logout</div>
 </div>
 
 
@@ -59,25 +59,34 @@
             <div class="menuItem" ng-click="showBeveiliging()"><img src="Images\security.png" id="beveiliging" class="settingIcon"> Security</div>
             <div class="menuItem" ng-click="showPrivacy()"><img src="Images\privacy.png" id="privacy" class="settingIcon"> Privacy</div>
             <div class="menuItem" ng-click="showMeldingen()"><img src="Images\notifications.png" id="Meldingen" class="settingIcon"> Notifications</div>
-            <div class="menuItem" ng-click="showAbout()"><img src="Images\aboutIcon.png" id="About" class="settingIcon"> About us</div>
+            <div class="menuItem" ng-click="showAbout()"><img src="Images\aboutIcon.png" id="Meldingen" class="settingIcon"> About us</div>
         </center>
     </div>
+
+    <div id="settingsTop">
+        <div class="respImageContainer" ng-click="showPersoonlijk()"><img src="Images\personal.png" class="respImage"></div>
+            <div class="respImageContainer" ng-click="showBeveiliging()"><img src="Images\security.png" id="beveiliging" class="respImage" /></div>
+            <div class="respImageContainer" ng-click="showPrivacy()"><img src="Images\privacy.png" id="privacy" class="respImage"></div>
+            <div class="respImageContainer" ng-click="showMeldingen()"><img src="Images\notifications.png" id="Meldingen" class="respImage"></div>
+            <div class="respImageContainer" ng-click="showAbout()"><img src="Images\aboutIcon.png" id="Meldingen" class="respImage"></div>
+    </div>
     <div id="settingsRight">
+        <div class="errorMsgs" style="color:red;" ng-repeat="wrongChange in wrongChanges"> {{ wrongChange }} </div>
+        <div class="errorMsgs" style="color:green;" ng-repeat="goodChange in goodChanges"> {{ goodChange }} </div>
         <div ng-show="Persoonlijk">
             <br /><b>PERSONAL SETTINGS:</b>
             <br />
             <br />
             <div class="optionName">
                 <img src="Images\icons\profilepic.png" class="settingRightIcon"> Profile picture
-                <input type="file" name="newProfilePic" id="newProfilePic" accept="image/*" />
+                <input type="file" name="newProfilePic" id="newProfilePic" ngf-select="uploadFiles($file, $invalidFiles)" ng-model="ProfileInfo.NewPic" accept="image/*">
                 <label class="profileOption" for="newProfilePic">Select new Profile picture</label>
             </div>
 
+            <div class="optionName"><img src="Images\icons\name.png" class="settingRightIcon"> First name <input class="optionValue" name="firstName" ng-model="ProfileInfo.FirstName"></div>
+            <div class="optionName"><img src="Images\icons\name.png" class="settingRightIcon"> Last name <input class="optionValue" ng-model="ProfileInfo.LastName"></div>
+            <div class="optionName"><img src="Images\icons\birthday.png" class="settingRightIcon"> Date of birth <input type="date" id="optionDate" value="{{ProfileInfo.BirthDate | date:'yyyy-MM-dd'}}" ng-model="ProfileInfo.BirthDate" /></div><br />
 
-            <div class="optionName">First name <input class="optionValue" name="firstName" ng-model="ProfileInfo.FirstName"></div>
-            <div class="optionName">Last name <input class="optionValue" ng-model="ProfileInfo.LastName" ></div>
-            <div class="optionName">Date of birth <input type="date" id="optionDate" value="{{ProfileInfo.BirthDate | date:'yyyy-MM-dd'}}" ng-model="ProfileInfo.BirthDate" /></div><br />
-            <div class="optionInfo">Warning: You can only change your name once a month. Upon changing your name, your friends will be notified about the namechange.</div>
             <br />
             <div class="dividerLine"></div>
             <br />
@@ -87,8 +96,9 @@
             <div class="optionName"><img src="Images\icons\jobicon.png" class="settingRightIcon"> Work <input class="optionValue" ng-model="ProfileInfo.Work"></div>
             <div class="optionName"><img src="Images\icons\schoolicon.png" class="settingRightIcon"> Study <input class="optionValue" ng-model="ProfileInfo.School"></div>
             <div class="optionName"><img src="Images\icons\homeicon.png" class="settingRightIcon"> Place <input class="optionValue" ng-model="ProfileInfo.Hometown"></div>
-            <div class="optionName"><img src="Images\icons\relationshipicon.png" class="settingRightIcon"> 
 
+            <div class="optionName">
+                <img src="Images\icons\relationshipicon.png" class="settingRightIcon">
                 Relation <select class="optionValue" ng-model="ProfileInfo.Relation">
                     <option>bachelor</option>
                     <option>In a relationship</option>
@@ -98,9 +108,17 @@
                     <option>Widow</option>
                 </select>
             </div>
-            <div class="optionName"><img src="Images\icons\gendericon.png" class="settingRightIcon"> Gender <input class="optionValue" ng-model="ProfileInfo.Gender"></div>
+            <div class="optionName">
+                <img src="Images\icons\gendericon.png" class="settingRightIcon">
+                Gender <select class="optionValue" ng-model="ProfileInfo.Gender">
+                    <option>Male</option>
+                    <option>Female</option>
+                    <option>Other</option>
+                </select>
+            </div>
             <div class="optionName"><img src="Images\icons\hobbies.png" class="settingRightIcon" />  Hobbies <input class="optionValue" ng-model="ProfileInfo.Hobby"></div>
             <div class="optionName"><img src="Images\icons\motto.png" class="settingRightIcon" />  Motto <input class="optionValueLong" ng-model="ProfileInfo.Motto"></div>
+            <div class="optionName"><img src="../../images/aboutIcon.png" class="settingRightIcon" /> About Me <input class="optionValueLong" ng-model="ProfileInfo.AboutMe"></div>
 
             <div class="applybutton">
                 <table class="buttonWrapper" id="table1">

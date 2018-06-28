@@ -35,10 +35,19 @@
 
 .settingRightIcon {
     position: relative;
-    height: 25%;
+    height:25%;
     left: 0;
     top: 0px;
     width: 25px;
+}
+
+
+.errorMsgs {
+    width: 100%;
+    height: auto;
+    text-align:center;
+    background-color:khaki;
+    font-size:1.2vw;
 }
 
 #settingsLeft {
@@ -70,6 +79,10 @@
         left: 0;
         top: 0px;
         width: 25px;
+    }
+
+    #settingsTop{
+        display:none;
     }
 
 @media (max-width: 1030px) {
@@ -291,7 +304,7 @@
         height: 40px;
         right: 2%;
         opacity: 0.9;
-        width: 30%;
+        width: auto;
         background-color: #fcfcfc;
         padding-left: 50px;
         display: inline-block;
@@ -344,4 +357,78 @@
 .hanze:hover {
     transition: 6s;
     opacity: 0.8;
+}
+
+@media (max-width: 700px) {
+    #settings {
+        position: relative;
+        width: 40%;
+        height: auto;
+        top: 20px;
+        min-width: 90%;
+        left: 5%;
+    }
+
+    #Header {
+        border-radius:12px;
+    }
+
+    #settingsTop {
+        display: block;
+        width: 90%;
+        height: 5%;
+        display: inline-block;
+        margin-top: 1%;
+        margin-left: 5%;
+    }
+
+
+    .respImageContainer {
+        height: 100%;
+        width: 20%;
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        
+        float: left;
+    }
+
+    .respImage {
+        width:100%;
+        height:100%;
+    }
+
+    #settingsLeft{
+        display:none;
+    }
+
+    #settingsRight {
+        display: block;
+        height: 87%;
+        padding-bottom: 15px;
+        border-radius: 4px;
+        border: 1px solid #999aa3;
+        width: 100%;
+        margin-top: 5%;
+    }
+
+    .applybutton {
+        position:relative;
+        width:100%;
+    }
+
+    .optionValue {
+        height:30px;
+        font-size:2.5vw;
+    }
+
+    .optionValueLong {
+        height:30px;
+        font-size:2.5vw
+    }
+
+
+    #newProfilePic, .optionDate, .profileOption{
+        font-size:2.5vw;
+    }
 }

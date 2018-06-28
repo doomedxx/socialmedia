@@ -15,7 +15,12 @@ angular.module('Profile')
         }, function fail(response) {
             console.log("Ging iets fout bij het ophalen van het Profile");
         });
-        
+
+        //Redirects
+        $scope.profilePosts = false;
+        $scope.profilePhotos = false;
+        $scope.profileNotes = true;
+        $scope.profileAbout = false;
 
         $scope.redirectFeed = function (e) {
             $location.path("/Feed");
@@ -47,36 +52,32 @@ angular.module('Profile')
             $location.replace();
         };
 
-        $scope.changeView = function (val) {
-            if (val == 'posts') {
-                $scope.content = "Show all the posts";
-
-                $scope.showPosts = true;
-                $scope.showMedia = false;
-                $scope.showNotities = false;
-                $scope.showOverMij = false;
-            } else if (val == 'media') {
-                $scope.content = "Show all the media";
-
-                $scope.showPosts = false;
-                $scope.showMedia = true;
-                $scope.showNotities = false;
-                $scope.showOverMij = false;
-            } else if (val == 'notities') {
-                $scope.content = "Show all the notes";
-
-                $scope.showPosts = false;
-                $scope.showMedia = false;
-                $scope.showNotities = true;
-                $scope.showOverMij = false;
-            } else if (val == 'over mij') {
-                $scope.content = "Show the over mij page";
-
-                $scope.showPosts = false;
-                $scope.showMedia = false;
-                $scope.showNotities = false;
-                $scope.showOverMij = true;
-            }
-
+        $scope.showProfilePosts = function () {
+            $scope.profilePosts = true;
+            $scope.profilePhotos = false;
+            $scope.profileNotes = false;
+            $scope.profileAbout = false;
         }
+
+        $scope.showProfilePhotos = function () {
+            $scope.profilePosts = false;
+            $scope.profilePhotos = true;
+            $scope.profileNotes = false;
+            $scope.profileAbout = false;
+        }
+
+        $scope.showProfileNotes = function () {
+            $scope.profilePosts = false;
+            $scope.profilePhotos = false;
+            $scope.profileNotes = true;
+            $scope.profileAbout = false;
+        }
+
+        $scope.showProfileAbout = function () {
+            $scope.profilePosts = false;
+            $scope.profilePhotos = false;
+            $scope.profileNotes = false;
+            $scope.profileAbout = true;
+        }
+
     });

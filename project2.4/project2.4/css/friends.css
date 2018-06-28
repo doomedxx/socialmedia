@@ -5,7 +5,8 @@
     box-sizing: border-box;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
-    border: 1px solid black;
+    border: 3px solid #999aa3;
+    border-radius: 15px;
     margin-top: 5%;
     margin-left: 30%;
     float: left;
@@ -27,7 +28,7 @@
 
 
 
-#friends {
+#friendsTen {
     width: 50%;
     height: 150px;
     display: inline-block;
@@ -39,7 +40,7 @@
     margin-left: 30%;
 }
 
-    #friends a {
+    #friendsTen a {
         margin-left: 92%;
     }
 
@@ -149,4 +150,66 @@
     background-image: url(../images/decline.png);
     margin-top: 5%;
     margin-left: 45%;
+}
+
+#friendsFour {
+    display:none;
+}
+
+.topTenImage {
+    width: 95%;
+    height: 95%;
+    margin-left: 2.5%;
+    background-size: cover;
+}
+
+.topTenName {
+    text-align: center;
+    font-size: 1vw;
+}
+
+@media (max-width:700px) {
+    #friendRequest {
+        display:none;
+    }
+
+    #mapContainer {
+        width:80%;
+        margin-left:10%;
+    }
+
+    #friendsTen{
+        display:none;
+    }
+
+    #friendsFour {
+        display: block;
+        width: 80%;
+        height: 10%;
+        display: inline-block;
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        border: 1px solid black;
+        margin-top: 10%;
+        margin-left: 10%;
+    }
+
+    .topFourFriend {
+        display:block;
+        width: 25%;
+        float: left;
+    }
+
+    .topFourImage {
+        width:95%;
+        height:95%;
+        margin-left:2.5%;
+        background-size: cover;
+    }
+
+    .topFourName{
+        text-align:center;
+        font-size:3vw;
+    }
 }

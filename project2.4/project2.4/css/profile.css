@@ -149,7 +149,28 @@
     transition: 0.3s;
     right: 8%;
 }
+.profileFriends {
+    display:block;
+    height: 100px;
+    width: 100px;
+    border:1px solid;
+    border-radius:25px;
+    text-align:center;
+    margin:10px;
+    float:left;
+}
 
+#profileHead{
+    width:100px;
+    height:100px;
+}
+
+#profileHeadPic {
+    width: 100%;
+    height: 100%;
+    border-radius:25%;
+    background-size: cover;
+}
 
 
 @media (max-width: 1430px) {
@@ -247,3 +268,57 @@
         border-width: 1px;
         border-style: solid;
     }
+
+
+@media (max-width: 700px) {
+    .infoBoxes-left{
+        display:none;
+    }
+
+    .infoBoxes-right{
+        display:none;
+    }
+
+    .profileWrapper {
+        min-height:50%;
+    }
+    .profileSpot {
+        position:absolute;
+        margin: auto;
+        left:18%;
+    }
+    .userNameProfile {
+        top: 50%;
+        border-radius: 10px;
+        padding: 10px;
+        left: 12%;
+        font-size: 20px;
+    }
+
+    .profileTabs {
+        top:30%;
+        position: absolute;
+        width: 50%;
+        height: 30px;
+        left: 3%;
+        min-width:20%;
+    }
+
+    .profiletab {
+        text-align: center;
+        margin-right: 2%;
+        padding: 5px;
+        font-size: calc(10px + 0.7vw);
+    }
+
+    #gotPosts-profile {
+        left:0;
+    }
+
+    .postcontainer-profile {
+        left: 0;
+        border-left-width: 5px;
+        min-width: 90%;
+    }
+    
+}
