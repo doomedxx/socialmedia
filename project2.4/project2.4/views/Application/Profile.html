@@ -5,7 +5,7 @@
         <div ng-click="redirectOptions()" class="menufiller"></div>
         <textarea class="searchBar" placeholder="Search (Names, jobs, gender)"></textarea>
         <div ng-click="redirectOptions()" class="menufiller"></div>
-        <div ng-click="redirectProfile()" class="selectedItem"><img src="Images\profileicon.png" class="menuIcon" />Profile</div>
+        <div ng-click="redirectProfile(Account.Id)" class="selectedItem"><img src="Images\profileicon.png" class="menuIcon" />Profile</div>
         <div ng-click="redirectOptions()" class="menuitem"><img src="Images\settingsicon.png" class="menuIcon" /> Options</div>
         <div ng-click="redirectLogin()" class="menuitem"><img src="../../images/icons/logout.png" class="menuIcon" /> Logout</div>
     </div>
@@ -28,7 +28,7 @@
         </div>
         <div id="gotPosts-profile" ng-show="profilePosts">
             <div class="postcontainer-profile" ng-repeat="item in Feed track by $index">
-                <img src="{{item.Creator.ProfilePictureUrl}}" class="user"><br /><p class="username">{{item.Creator.FirstName}} {{item.Creator.LastName}} </p>
+                <img src="{{item.Creator.ProfilePictureUrl}}" ng-click="redirectProfile(item.Creator.Id)" class="user"><br /><p class="username">{{item.Creator.FirstName}} {{item.Creator.LastName}} </p>
                 <div class="post">
                     <p class="posttext">
                         {{item.Feed.Text}}
@@ -44,7 +44,7 @@
 
                     <div class="profileName"> {{comment.FirstName}} {{comment.LastName}}</div>
                     <div class="commentText"> {{comment.CommentText}} </div>
-                    <img src="{{comment.ProfilePicUrl}}" class="commentuser">
+                    <img src="{{comment.ProfilePicUrl}}" ng-click="redirectTest(comment.UserId)" class="commentuser">
                 </div>
                 <div class="placecomment-containter ">
                     <textarea class="commentArea" placeholder="Enter your comment here" ng-model="NewComment[$index]"></textarea>
@@ -60,27 +60,38 @@
         </div>
 
         <div id="gotPosts-profile" ng-show="profileNotes">
-            <div class="postcontainer-profile">
+            <div class="postcontainer-friendsProfile">
+                <div id="infoContainer">
+                    <div id="Header"><img src="Images\icons\network.png" id="headerIcon" ng-click="redirectFriends()"><center>Friends</center></div>
+                    <div ng-click="redirectFriends()" style="text-align:center; border-bottom:1px solid black;">Show your friends hometowns</div>
+                    <div class="profileFriends">
+                        <div id="profileHead"> <img id="profileHeadPic" src="{{ProfileInfo.ProfilePictureUrl}}" /> </div>
+                        <div id="profileName">{{ProfileInfo.FirstName}} {{ProfileInfo.LastName}}</div>
+                    </div>
+                    <div class="profileFriends">
+                        <div id="profileHead"> <img id="profileHeadPic" src="../../images/wesley.jpg" /> </div>
+                        <div id="profileName">Wesley de Waart</div>
+                    </div>
+                    <div class="profileFriends">
+                        <div id="profileHead"> <img id="profileHeadPic" src="../../images/arjen.jpg" /> </div>
+                        <div id="profileName">Arjen Bovee</div>
+                    </div>
+                    <div class="profileFriends">
+                        <div id="profileHead"> <img id="profileHeadPic" src="../../images/BarackObama.jpg" /> </div>
+                        <div id="profileName">Miguel Grant</div>
+                    </div>
+                    <div class="friendThumbnail">HOOFD</div>
+                    <div class="friendThumbnail">HOOFD</div>
+                    <div class="friendThumbnail">HOOFD</div>
+                    <div class="friendThumbnail">HOOFD</div>
+                    <div class="friendThumbnail">HOOFD</div>
+                    <div ng-click="redirectFriends()" class="friendThumbnail">Show more friends</div>
+                </div>
+               
 
-                <div id="Header"><img src="Images\icons\network.png" id="headerIcon"><center>Friends</center></div>
-                <div ng-click="redirectFriends()" style="text-align:center; border-bottom:1px solid black;">Show your friends hometowns</div>
-                <div class="profileFriends">
-                    <div id="profileHead"> <img id="profileHeadPic" src="{{ProfileInfo.ProfilePictureUrl}}" /> </div>
-                    <div id="profileName">{{ProfileInfo.FirstName}} {{ProfileInfo.LastName}}</div>
-                </div>
-                <div class="profileFriends">
-                    <div id="profileHead"> <img id="profileHeadPic" src="../../images/wesley.jpg" /> </div>
-                    <div id="profileName">Wesley de Waart</div>
-                </div>
-                <div class="profileFriends">
-                    <div id="profileHead"> <img id="profileHeadPic" src="../../images/arjen.jpg" /> </div>
-                    <div id="profileName">Arjen Bovee</div>
-                </div>
-                <div class="profileFriends">
-                    <div id="profileHead"> <img id="profileHeadPic" src="../../images/BarackObama.jpg" /> </div>
-                    <div id="profileName">Miguel Grant</div>
-                </div>
-                
+    
+    
+   
                 <!--
     foreach friend{
         <div class="friendThumbnail">

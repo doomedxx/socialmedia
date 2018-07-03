@@ -1,5 +1,5 @@
 ﻿angular.module('Feed')
-    .controller('FeedController', function ($scope, $route, $location, $timeout, UriBuilder, httpRequestService) {
+    .controller('FeedController', function ($scope, $route, $location, $timeout, UriBuilder, $rootScope, httpRequestService) {
         $scope.NewComment = [];
         $scope.RespectGiven = [];
 
@@ -53,7 +53,7 @@
                 console.log("Ging iets fout bij het opslaan van de comment");
             });
         }
-
+        //Respect button
         $scope.GiveRespect = function (FeedId, index) {
             var upvote = true;
             if ($scope.RespectGiven[index] == 1) {
@@ -78,12 +78,25 @@
             });
         };
 
+        $scope.showInfo = function (profileId) {
+            console.log(profileId);
+            var url = UriBuilder.BuildUrl("ProfileInfo", { 'id': profileId });
+            httpRequestService.getRequest(url, function success(response) {
+                console.log(response.data);
+            }, function fail(response) {
+                console.log("Ging iets fout bij het ophalen van het account");
+            });
+        }
+
+
         $scope.redirectFeed = function (e) {
             $location.path("/Feed");
             $location.replace();
         };
 
-        $scope.redirectProfile = function (e) {
+        $scope.redirectProfile = function (passId) {
+            console.log("Deze:" + passId);
+            $rootScope.UsId = passId;
             $location.path("/Profile");
             $location.replace();
         };

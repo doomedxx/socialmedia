@@ -1,4 +1,4 @@
-var app = angular.module('doeIets', ['ngRoute', 'Token', 'httpRequests', 'Login', 'Register', 'Feed', 'Profile', 'Options', 'Privacy', 'Friends', 'mapApp', 'ngFileUpload']);
+var app = angular.module('doeIets', ['ngRoute', 'Token', 'httpRequests', 'Login', 'Register', 'Feed', 'Profile', 'Options', 'Privacy', 'Friends', 'mapApp' ,'ngFileUpload']);
 
 
 

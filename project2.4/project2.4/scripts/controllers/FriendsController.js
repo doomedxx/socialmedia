@@ -1,5 +1,5 @@
 ﻿angular.module('Friends')
-    .controller('FriendsController', function ($scope, $route, $location, $timeout, UriBuilder, httpRequestService) {
+    .controller('FriendsController', function ($scope, $route, $location, $timeout, $rootScope, UriBuilder, httpRequestService) {
 
 
         //Getting ProfileInfo and Feed 
@@ -23,7 +23,16 @@
             $location.replace();
         };
 
-        $scope.redirectProfile = function (e) {
+        $scope.redirectProfile = function (passId) {
+            console.log(passId);
+            $rootScope.UsId = passId;
+            $location.path("/Profile");
+            $location.replace();
+        };
+
+        $scope.redirectTest = function (passId) {
+            console.log(passId);
+            $rootScope.UsId = passId;
             $location.path("/Profile");
             $location.replace();
         };

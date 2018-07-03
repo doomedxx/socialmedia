@@ -4,7 +4,7 @@
     <div ng-click="redirectOptions()" class="menufiller"></div>
     <textarea class="searchBar" placeholder="Search (Names, jobs, gender)"></textarea>
     <div ng-click="redirectOptions()" class="menufiller"></div>
-    <div ng-click="redirectProfile()" class="menuitem"><img src="Images\profileicon.png" class="menuIcon" />Profile</div>
+    <div ng-click="redirectProfile(Account.Id)" class="menuitem"><img src="Images\profileicon.png" class="menuIcon" />Profile</div>
     <div ng-click="redirectOptions()" class="menuitem"><img src="Images\settingsicon.png" class="menuIcon" /> Options</div>
     <div ng-click="redirectLogin()" class="menuitem"><img src="../../images/icons/logout.png" class="menuIcon"/> Logout</div>
 </div>
@@ -66,8 +66,8 @@
         </div>
 
     </div><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-        <div class="postcontainer-feed" ng-repeat="item in Feed track by $index">
-        <img src="{{item.Creator.ProfilePictureUrl}}" class="user"><br /><p class="username">{{item.Creator.FirstName}} {{item.Creator.LastName}} </p>
+    <div class="postcontainer-feed" ng-repeat="item in Feed track by $index">
+        <img src="{{item.Creator.ProfilePictureUrl}}" ng-click="redirectProfile(item.Creator.Id)" class="user"><br /><p class="username">{{item.Creator.FirstName}} {{item.Creator.LastName}} </p>
         <div class="post">
             <p class="posttext">
                 {{item.Feed.Text}}
@@ -84,7 +84,7 @@
             <!-- COMMENT -->
             <div class="profileName"> {{comment.FirstName}} {{comment.LastName}}</div>
             <div class="commentText"> {{comment.CommentText}} </div>
-            <img src="{{comment.ProfilePicUrl}}" class="commentuser">
+            <img src="{{comment.ProfilePicUrl}}" ng-click="redirectProfile(comment.UserId)" class="commentuser">
         </div>
 
         <div class="placecomment-containter ">
